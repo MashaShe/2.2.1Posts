@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Post.kt</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">2.2.1 Posts</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">Post.kt</span></div><h1>Post.kt</h1><pre class="source lang-java linenums"><span class="fc" id="L1">data class Post (</span>
+        //id = 0 РёР»Рё &lt;0, Р·РЅР°С‡РёС‚ РѕР±СЉРµРєС‚Р° РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚
+<span class="pc" id="L3">        var id: Int,</span>
+<span class="nc" id="L4">        internal val nextId: Int,</span>
+<span class="nc" id="L5">        val ownerId: Int, //РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РІР»Р°РґРµР»СЊС†Р° СЃС‚РµРЅС‹, РЅР° РєРѕС‚РѕСЂРѕР№ СЂР°Р·РјРµС‰РµРЅР° Р·Р°РїРёСЃСЊ.</span>
+<span class="nc" id="L6">        val formId: Int, //РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р°РІС‚РѕСЂР° Р·Р°РїРёСЃРё (РѕС‚ С‡СЊРµРіРѕ РёРјРµРЅРё РѕРїСѓР±Р»РёРєРѕРІР°РЅР° Р·Р°РїРёСЃСЊ)</span>
+<span class="pc" id="L7">        val createdBy: Int =0, // РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂР°, РєРѕС‚РѕСЂС‹Р№ РѕРїСѓР±Р»РёРєРѕРІР°Р» Р·Р°РїРёСЃСЊ (РІРѕР·РІСЂР°С‰Р°РµС‚СЃСЏ С‚РѕР»СЊРєРѕ РґР»СЏ СЃРѕРѕР±С‰РµСЃС‚РІ РїСЂРё Р·Р°РїСЂРѕСЃРµ СЃ РєР»СЋС‡РѕРј РґРѕСЃС‚СѓРїР° Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂР°). Р’РѕР·РІСЂР°С‰Р°РµС‚СЃСЏ РІ Р·Р°РїРёСЃСЏС…, РѕРїСѓР±Р»РёРєРѕРІР°РЅРЅС‹С… РјРµРЅРµРµ 24 С‡Р°СЃРѕРІ РЅР°Р·Р°Рґ.</span>
+<span class="nc" id="L8">        val date: Int, //РІСЂРµРјСЏ РїСѓР±Р»РёРєР°С†РёРё Р·Р°РїРёСЃРё РІ С„РѕСЂРјР°С‚Рµ unixtime.</span>
+<span class="nc" id="L9">        val text: String,</span>
+<span class="pc" id="L10">        val replyOwnerId: Int = 0, //РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РІР»Р°РґРµР»СЊС†Р° Р·Р°РїРёСЃРё, РІ РѕС‚РІРµС‚ РЅР° РєРѕС‚РѕСЂСѓСЋ Р±С‹Р»Р° РѕСЃС‚Р°РІР»РµРЅР° С‚РµРєСѓС‰Р°СЏ.</span>
+<span class="pc" id="L11">        val replyPostId: Int = 0, //РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё, РІ РѕС‚РІРµС‚ РЅР° РєРѕС‚РѕСЂСѓСЋ Р±С‹Р»Р° РѕСЃС‚Р°РІР»РµРЅР° С‚РµРєСѓС‰Р°СЏ.</span>
+<span class="pc" id="L12">        val friendOnly: Boolean = false,</span>
+<span class="pc" id="L13">        val comments: Comment = Comment(), //РёРЅС„РѕСЂРјР°С†РёСЏ Рѕ РєРѕРјРјРµРЅС‚Р°СЂРёСЏС… Рє Р·Р°РїРёСЃРё, РѕР±СЉРµРєС‚ СЃ РїРѕР»СЏРјРё - СЃРј РѕС‚РґРµР»СЊРЅС‹Р№ РєР»Р°СЃСЃ</span>
+<span class="pc" id="L14">        val copyright: Copyright = Copyright(), //РёСЃС‚РѕС‡РЅРёРє РјР°С‚РµСЂРёР°Р»Р°, РѕР±СЉРµРєС‚ СЃ РїРѕР»СЏРјРё - СЃРј РѕС‚РґРµР»СЊРЅС‹Р№ РєР»Р°СЃСЃ</span>
+<span class="pc" id="L15">        val likes: Likes = Likes(), //РёРЅС„РѕСЂРјР°С†РёСЏ Рѕ Р»Р°Р№РєР°С… Рє Р·Р°РїРёСЃРё, РѕР±СЉРµРєС‚ СЃ РїРѕР»СЏРјРё - СЃРј РѕС‚РґРµР»СЊРЅС‹Р№ РєР»Р°СЃСЃ</span>
+<span class="pc" id="L16">        val reposts: Reposts = Reposts(), //РёРЅС„РѕСЂРјР°С†РёСЏ Рѕ СЂРµРїРѕСЃС‚Р°С… Р·Р°РїРёСЃРё (В«Р Р°СЃСЃРєР°Р·Р°С‚СЊ РґСЂСѓР·СЊСЏРјВ»), РѕР±СЉРµРєС‚ СЃ РїРѕР»СЏРјРё - СЃРј РѕС‚РґРµР»СЊРЅС‹Р№ РєР»Р°СЃСЃ</span>
+<span class="pc" id="L17">        val views: Views = Views(), //РёРЅС„РѕСЂРјР°С†РёСЏ Рѕ РїСЂРѕСЃРјРѕС‚СЂР°С… Р·Р°РїРёСЃРё. РћР±СЉРµРєС‚ СЃ РµРґРёРЅСЃС‚РІРµРЅРЅС‹Рј РїРѕР»РµРј - СЃРј РѕС‚РґРµР»СЊРЅС‹Р№ РєР»Р°СЃСЃ</span>
+<span class="pc" id="L18">        val postType:String = &quot;post&quot;, //С‚РёРї Р·Р°РїРёСЃРё, РјРѕР¶РµС‚ РїСЂРёРЅРёРјР°С‚СЊ СЃР»РµРґСѓСЋС‰РёРµ Р·РЅР°С‡РµРЅРёСЏ: post, copy, reply, postpone, suggest.</span>
+<span class="pc" id="L19">        val signerId: Int = 0, //РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р°РІС‚РѕСЂР°, РµСЃР»Рё Р·Р°РїРёСЃСЊ Р±С‹Р»Р° РѕРїСѓР±Р»РёРєРѕРІР°РЅР° РѕС‚ РёРјРµРЅРё СЃРѕРѕР±С‰РµСЃС‚РІР° Рё РїРѕРґРїРёСЃР°РЅР° РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј;</span>
+<span class="pc" id="L20">        val canPin: Boolean = true, // РёРЅС„РѕСЂРјР°С†РёСЏ Рѕ С‚РѕРј, РјРѕР¶РµС‚ Р»Рё С‚РµРєСѓС‰РёР№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ Р·Р°РєСЂРµРїРёС‚СЊ Р·Р°РїРёСЃСЊ</span>
+<span class="pc" id="L21">        val canDelete: Boolean = false, //РёРЅС„РѕСЂРјР°С†РёСЏ Рѕ С‚РѕРј, РјРѕР¶РµС‚ Р»Рё С‚РµРєСѓС‰РёР№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ СѓРґР°Р»РёС‚СЊ Р·Р°РїРёСЃСЊ</span>
+<span class="pc" id="L22">        val canEdit:Boolean = false, //РёРЅС„РѕСЂРјР°С†РёСЏ Рѕ С‚РѕРј, РјРѕР¶РµС‚ Р»Рё С‚РµРєСѓС‰РёР№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ СЂРµРґР°РєС‚РёСЂРѕРІР°С‚СЊ Р·Р°РїРёСЃСЊ</span>
+<span class="pc" id="L23">        var is_pinned: Boolean = false, //РёРЅС„РѕСЂРјР°С†РёСЏ Рѕ С‚РѕРј, С‡С‚Рѕ Р·Р°РїРёСЃСЊ Р·Р°РєСЂРµРїР»РµРЅР°.</span>
+<span class="pc" id="L24">        val markedAsAdds: Boolean = false, //РёРЅС„РѕСЂРјР°С†РёСЏ Рѕ С‚РѕРј, СЃРѕРґРµСЂР¶РёС‚ Р»Рё Р·Р°РїРёСЃСЊ РѕС‚РјРµС‚РєСѓ &quot;СЂРµРєР»Р°РјР°&quot;</span>
+<span class="pc" id="L25">        var isFavorite: Boolean = false, // true, РµСЃР»Рё РѕР±СЉРµРєС‚ РґРѕР±Р°РІР»РµРЅ РІ Р·Р°РєР»Р°РґРєРё Сѓ С‚РµРєСѓС‰РµРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.</span>
+<span class="pc" id="L26">        val donut:Donut = Donut(),//РёРЅС„РѕСЂРјР°С†РёСЏ Рѕ Р·Р°РїРёСЃРё VK Donut, РѕР±СЉРµРєС‚ СЃ РїРѕР»СЏРјРё - СЃРј РѕС‚РґРµР»СЊРЅС‹Р№ РєР»Р°СЃСЃ</span>
+<span class="pc" id="L27">        val postponed_id:Int = 0//РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РѕС‚Р»РѕР¶РµРЅРЅРѕР№ Р·Р°РїРёСЃРё. Р­С‚Рѕ РїРѕР»Рµ РІРѕР·РІСЂР°С‰Р°РµС‚СЃСЏ С‚РѕРіРґР°, РєРѕРіРґР° Р·Р°РїРёСЃСЊ СЃС‚РѕСЏР»Р° РЅР° С‚Р°Р№РјРµСЂРµ.</span>
+
+    ){
+
+}
+
+
+//likes: Int = 0
+//        var likes: Int = likes
+//            set(value){ СЌС‚Рѕ СЃРµС‚С‚РµСЂ
+//                    if (value &gt;=0) {
+//                        field = value - С‚Р°Рє РЅРµ РїСЂРёСЃРІРѕРёС‚ РѕС‚СЂРёС†Р°С‚РµР»СЊРЅС‹Рµ Р·РЅР°С‡РµРЅРёСЏ РїРѕР»СЋ
+//                    }
+//            }
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
