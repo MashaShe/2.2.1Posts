@@ -3,25 +3,22 @@ import org.junit.Test
 
 class WallServiceTest {
 
-    @org.junit.Test
-    fun main() {
-
-            }
     @Test
-    fun addTest(){
-        val myPost = Post(id = 1,
-                nextId = 2,
-                ownerId = 1,
-                formId = 1,
-                date = 1610312400,
-                text = "My first post. On my own Wall",
-                comments = Comment(0),
-                likes = Likes(2, true),
-                reposts = Reposts(2),
-                views = Views(32),
-                postType = "post",
-                canDelete = true,
-                canEdit = true
+    fun addTest() {
+        val myPost = Post(
+            id = 1,
+            nextId = 2,
+            ownerId = 1,
+            formId = 1,
+            date = 1610312400,
+            text = "My first post. On my own Wall",
+            comments = Comment(0),
+            likes = Likes(2, true),
+            reposts = Reposts(2),
+            views = Views(32),
+            postType = "post",
+            canDelete = true,
+            canEdit = true
         )
         var posts = WallService()
         posts.add(myPost)
@@ -31,7 +28,8 @@ class WallServiceTest {
     }
 
     fun updateExistingIdTest() {
-        val myPost = Post(id = 1,
+        val myPost = Post(
+            id = 1,
             nextId = 2,
             ownerId = 1,
             formId = 1,
@@ -46,7 +44,8 @@ class WallServiceTest {
             canEdit = true
         )
 
-        val myPost2 = Post(id = 1,
+        val myPost2 = Post(
+            id = 1,
             nextId = 2,
             ownerId = 1,
             formId = 1,
@@ -69,7 +68,8 @@ class WallServiceTest {
     }
 
     fun updateNonExistingIdTest() {
-        val myPost = Post(id = 1,
+        val myPost = Post(
+            id = 1,
             nextId = 2,
             ownerId = 1,
             formId = 1,
@@ -84,12 +84,13 @@ class WallServiceTest {
             canEdit = true
         )
 
-        val myPost2 = Post(id = 2,
+        val myPost2 = Post(
+            id = 2,
             nextId = 2,
             ownerId = 1,
             formId = 1,
             date = 1610312400,
-            text = "Updated",
+            text = "Updated!",
             comments = Comment(0),
             likes = Likes(2, true),
             reposts = Reposts(2),
@@ -105,6 +106,6 @@ class WallServiceTest {
         val expected = false
         assertEquals(result, expected)
     }
-
-
 }
+
+
