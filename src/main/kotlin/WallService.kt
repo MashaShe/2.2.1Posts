@@ -1,15 +1,15 @@
-class WallService (
+object WallService{
+
     var posts: Array<Post> = emptyArray<Post>()
-) {
 
     fun add(post: Post): Post {
         if (posts.isEmpty()) {
             posts += post
         }
         else{
-        val lastIndex = posts.size - 1
-        post.id = posts[lastIndex].nextId
-        posts += post}
+        post.id = posts.last().id + 1
+        posts += post
+        }
         return post
     }
 
@@ -31,8 +31,8 @@ class WallService (
             }
     }
 
-    operator fun get(i: Int): Post {
-        return posts[i]
-
-    }
+//    operator fun get(i: Int): Post {
+//        return posts[i]
+//
+//    }
 }

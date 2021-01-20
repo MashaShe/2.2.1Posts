@@ -1,6 +1,5 @@
 fun main (){
     val myPost = Post(id = 1,
-            nextId = 2,
             ownerId = 1,
             formId = 1,
             date = 1610312400,
@@ -14,7 +13,6 @@ fun main (){
             canEdit = true
     )
     val notMyPost1 = Post(id = 2,
-            nextId = 3,
             ownerId = 2,
             formId = 2,
             date = 1610312400,
@@ -29,7 +27,6 @@ fun main (){
     )
 
     val notMyPost2 = Post(id = 3,
-            nextId = 4,
             ownerId = 3,
             formId = 3,
             date = 1610312400,
@@ -43,7 +40,6 @@ fun main (){
             canEdit = false
     )
     val notMyPost21 = Post(id = 3,
-            nextId = 4,
             ownerId = 7,
             formId = 3,
             date = 1610312400,
@@ -57,13 +53,13 @@ fun main (){
             canEdit = false
     )
 
-    var posts = WallService()
-    posts.add(myPost)
-    posts.add(notMyPost1)
-    posts.add(notMyPost2)
-    posts.update(notMyPost21)
 
-    posts.printWall()
+    WallService.add(myPost)
+    WallService.add(notMyPost1)
+    WallService.add(notMyPost2)
+    WallService.update(notMyPost21)
+
+    WallService.printWall()
 
 
 }

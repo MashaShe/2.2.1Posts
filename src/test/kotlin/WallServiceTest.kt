@@ -1,3 +1,4 @@
+import WallService.posts
 import org.junit.Assert.*
 import org.junit.Test
 
@@ -7,7 +8,6 @@ class WallServiceTest {
     fun addTest() {
         val myPost = Post(
             id = 1,
-            nextId = 2,
             ownerId = 1,
             formId = 1,
             date = 1610312400,
@@ -20,17 +20,16 @@ class WallServiceTest {
             canDelete = true,
             canEdit = true
         )
-        var posts = WallService()
-        posts.add(myPost)
+
+        WallService.add(myPost)
         val result = posts[0].id !== 0
         val expected = true
         assertEquals(result, expected)
     }
-
+    @Test
     fun updateExistingIdTest() {
         val myPost = Post(
             id = 1,
-            nextId = 2,
             ownerId = 1,
             formId = 1,
             date = 1610312400,
@@ -46,7 +45,6 @@ class WallServiceTest {
 
         val myPost2 = Post(
             id = 1,
-            nextId = 2,
             ownerId = 1,
             formId = 1,
             date = 1610312400,
@@ -60,17 +58,16 @@ class WallServiceTest {
             canEdit = true
         )
 
-        var posts = WallService()
-        posts.add(myPost)
-        val result = posts.update(myPost2)
+
+        WallService.add(myPost)
+        val result = WallService.update(myPost2)
         val expected = true
         assertEquals(result, expected)
     }
-
+    @Test
     fun updateNonExistingIdTest() {
         val myPost = Post(
             id = 1,
-            nextId = 2,
             ownerId = 1,
             formId = 1,
             date = 1610312400,
@@ -85,8 +82,7 @@ class WallServiceTest {
         )
 
         val myPost2 = Post(
-            id = 2,
-            nextId = 2,
+            id = 9,
             ownerId = 1,
             formId = 1,
             date = 1610312400,
@@ -100,9 +96,9 @@ class WallServiceTest {
             canEdit = true
         )
 
-        var posts = WallService()
-        posts.add(myPost)
-        val result = posts.update(myPost2)
+
+        WallService.add(myPost)
+        val result = WallService.update(myPost2)
         val expected = false
         assertEquals(result, expected)
     }
