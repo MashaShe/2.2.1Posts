@@ -9,8 +9,10 @@ fun main (){
             reposts = Reposts(2),
             views = Views(32),
             postType = "post",
+            attachment = arrayOf<Attachment>(AudioAttachment ("audio", Audio ())),
             canDelete = true,
             canEdit = true
+
     )
     val notMyPost1 = Post(id = 2,
             ownerId = 2,
@@ -22,6 +24,7 @@ fun main (){
             reposts = Reposts(2),
             views = Views(32),
             postType = "post",
+            attachment = arrayOf<Attachment>(VideoAttachment ("video", Video ())),
             canDelete = false,
             canEdit = false
     )
