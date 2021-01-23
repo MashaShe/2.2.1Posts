@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="WallServiceTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-01-23T15:37:22" hostname="DESKTOP-30FJJC7" time="0.149">
+<testsuite name="WallServiceTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-01-23T16:15:23" hostname="DESKTOP-30FJJC7" time="0.201">
   <properties/>
-  <testcase name="updateExistingIdTest" classname="WallServiceTest" time="0.137"/>
-  <testcase name="addTest" classname="WallServiceTest" time="0.012"/>
+  <testcase name="updateExistingIdTest" classname="WallServiceTest" time="0.182"/>
+  <testcase name="addTest" classname="WallServiceTest" time="0.019"/>
   <testcase name="updateNonExistingIdTest" classname="WallServiceTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
