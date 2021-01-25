@@ -4,7 +4,7 @@ fun main (){
             formId = 1,
             date = 1610312400,
             text = "My first post. On my own Wall",
-            comments = Comment(0),
+            comments = CommentInfo(0),
             likes = Likes(2, true),
             reposts = Reposts(2),
             views = Views(32),
@@ -19,7 +19,7 @@ fun main (){
             formId = 2,
             date = 1610312400,
             text = "Smbd's else post",
-            comments = Comment(0),
+            comments = CommentInfo(0),
             likes = Likes(2, true),
             reposts = Reposts(2),
             views = Views(32),
@@ -34,7 +34,7 @@ fun main (){
             formId = 3,
             date = 1610312400,
             text = "Smbd's else post",
-            comments = Comment(0),
+            comments = CommentInfo(0),
             likes = Likes(2, true),
             reposts = Reposts(2),
             views = Views(32),
@@ -47,7 +47,7 @@ fun main (){
             formId = 3,
             date = 1610312400,
             text = "Smbd's else post. Updated!",
-            comments = Comment(0),
+            comments = CommentInfo(0),
             likes = Likes(2, true),
             reposts = Reposts(2),
             views = Views(32),
@@ -56,11 +56,17 @@ fun main (){
             canEdit = false
     )
 
+    val myComment = Comment(
+            id=1,
+            postId = 1
+    )
+
 
     WallService.add(myPost)
     WallService.add(notMyPost1)
     WallService.add(notMyPost2)
     WallService.update(notMyPost21)
+    WallService.createComment(myComment)
 
     WallService.printWall()
 

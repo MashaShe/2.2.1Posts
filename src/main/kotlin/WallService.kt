@@ -1,6 +1,9 @@
+import java.lang.RuntimeException
+
 object WallService{
 
     var posts: Array<Post> = emptyArray<Post>()
+    var comments = emptyArray<Comment>()
 
     fun add(post: Post): Post {
         if (posts.isEmpty()) {
@@ -31,8 +34,38 @@ object WallService{
             }
     }
 
+    fun createComment(comment: Comment) {
+        var ret: Boolean = false
+        posts.forEachIndexed { index, Post ->
+            if (comment.postId == posts[index].id) {
+                if (comments.isEmpty()) {
+                    comments += comment
+                }
+                else{
+                    //val commentsIndex: Int = comments.lastIndex + 1
+                    comment.id = comments.lastIndex + 1
+                    comments+= comment
+                }
+                ret = true
+            }
+
+    }
+       // try {
+            if (ret) {
+                println(" everything is ok with this comment")
+            } else throw PostNotFoundException("no post with id: ${comment.postId}")
+        //}
+      //  catch (e: RuntimeException) {
+       //     println("Произошла ошибка при добавлении комментария. Возможно пост удален")
+       // }
+
+}
+class PostNotFoundException(message: String): RuntimeException(message) {
+
+}
+}
+
 //    operator fun get(i: Int): Post {
 //        return posts[i]
 //
 //    }
-}
